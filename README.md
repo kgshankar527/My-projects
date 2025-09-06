@@ -3,33 +3,26 @@
 This is a random text file for the Cube & Math Operations project.
 It contains sample inputs and outputs for testing.
 
-Project: Cube & Math Operations<br>      # Author: Gauri Shankar Katara
-<br>
+Project: Cube & Math Operations<br> <h4>Author: Gauri Shankar Katara</h4>
 Date: 2025-09-04
 ##  Live Demo
-  <h1>🚀 Welcome to My Projects</h1>
-  <p>Click a project below:</p>
+  Click a project below:
   <ul>
-    <li><a href="https://kgshankar527.github.io/My-projects/Project1/">Project 1</a></li>
-    <li><a href="https://kgshankar527.github.io/My-projects/Project2/">Project 2</a></li>
-    <li><a href="https://kgshankar527.github.io/My-projects/Project3/">Project 3</a></li>
+    <li><a href="https://kgshankar527.github.io/My-projects/Project1/">Smart Calculator</a></li>
+    <li><a href="https://kgshankar527.github.io/My-projects/Project2/">Square</a></li>
+    <li><a href="https://kgshankar527.github.io/My-projects/Project3/">Cube Calculations</a></li>
 </ul>
---------------------------
-##  Smart Calculator 
-##  Square & 
-##  Cube Calculations
---------------------------
-Input: 5
-Square(5) = 25
-Cube(5)   = 125
-
-Input: 9
-Square(9) = 81
-Cube(9)   = 729
-
-Input: 12
-Square(12) = 144
-Cube(12)   = 1728
+   Input: 5 <br>
+   Square(5) = 25<br>
+   Cube(5)   = 125<br>
+   <br>
+   Input: 9<br>
+   Square(9) = 81<br>
+   Cube(9)   = 729<br>
+    <br>
+   Input: 12<br>
+   Square(12) = 144<br>
+   Cube(12)   = 1728<br>
 
 --------------------------
 Math Operations
