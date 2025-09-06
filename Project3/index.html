@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cube & Math Operations</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+    }
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 20px 10px;
+      background: linear-gradient(135deg, #74ebd5 0%, #9face6 100%);
+    }
+    .wrapper {
+      display: flex;
+      flex-direction: column; /* mobile default */
+      gap: 20px;
+      width: 100%;
+      max-width: 800px;
+    }
+    @media (min-width: 700px) {
+      .wrapper {
+        flex-direction: row; /* बड़े screen पर side by side */
+      }
+    }
+    h1 {
+      font-size: 20px;
+      background: linear-gradient(135deg, #FDFE4F, #000AFF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .card {
+      flex: 1;
+      background: linear-gradient(135deg, #AE4FFE, #FE8300);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+    }
+    input {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input:focus {
+      border-color: #4facfe;
+      box-shadow: 0 0 5px rgba(79,172,254,0.5);
+    }
+    
+    .btn-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px;
+    }
+    
+    button {
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+      color: linear-gradient(135deg, #AE4FFE, #FE8300);
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: linear-gradient(135deg, #00f2fe, #4facfe);
+    }
+    p {
+      font-size: 18px;
+      text-align: center;
+      font-weight: bold;
+      color: #2e7d32;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <!-- Cube Card 1-->
+    <div class="card">
+      <h1>Square & Cube calculetion</h1>
+      <input type="text" id="value" placeholder="Enter a number">
+      <div class="btn-group">
+     <button type="button" onclick="square()">Square</button> 
+      
+      <button type="button" onclick="cube()">Qube</button>
+      
+      <button type="button" onclick="clr1()">Clear</button>
+      </div>
+      <p id="result"></p>
+    </div>
+    
+    <!-- Addition Card 2-->
+    <div class="card">
+      <h1>Math Operations</h1>
+      <input type="text" placeholder="Enter first number" id="num1"/>
+      <input type="text" placeholder="Enter second number" id="num2"/>
+      
+      <div class="btn-group">
+      <button type="button" onclick="add()">Addition</button>
+      <button type="button" onclick="sub()">Subtract</button>
+      <button type="button" onclick="mul()">Multiplication</button>
+      <button type="button" onclick="divide()">Divide</button>
+      <button type="button" onclick="rem()">Remainder</button>
+      <button type="button" onclick="clr()">Clear</button>
+    </div>
+    
+      <p id="demo"></p>
+    </div>
+  </div>
+  
+  <script>
+  // Square, cube & Clear Card 1
+  
+  // --Square-- 
+    function square(){
+      var x = document.getElementById("value").value;
+      document.getElementById("result").innerHTML =x*x;
+    }
+    
+  // --Qube--
+    function cube() {
+      var a = document.getElementById("value").value;
+    document.getElementById("result").innerHTML =a*a*a;
+    }
+    // --Clear--
+    function clr1() {
+    document.getElementById("value").value ="";
+  document.getElementById("result").innerHTML ="";
+}
+    // Math Operations Card 2
+    // --Addition--
+    function add() {
+      var n1 = parseInt(document.getElementById("num1").value);
+      var n2 = parseInt(document.getElementById("num2").value);
+      if (isNaN(n1)) n1 = 0;
+      if (isNaN(n2)) n2 = 0;
+      var sum = n1 + n2;
+      document.getElementById("demo").innerHTML = "Addition = " + sum;
+    }
+    
+    // --Subtract--
+    function sub() {
+      var n1 = parseInt(document.getElementById("num1").value);
+      var n2 = parseInt(document.getElementById("num2").value);
+      if (isNaN(n1)) n1 = 0;
+      if (isNaN(n2)) n2 = 0;
+      var sub = n1 - n2;
+      document.getElementById("demo").innerHTML = "Subtract = " + sub;
+    }
+    
+    // --Multiplication--
+    function mul() {
+      var n1 = parseInt(document.getElementById("num1").value);
+      var n2 = parseInt(document.getElementById("num2").value);
+      if (isNaN(n1)) n1 = 0;
+      if (isNaN(n2)) n2 = 0;
+      var mul = n1 * n2;
+      document.getElementById("demo").innerHTML = "Multiplication = " + mul;
+    }
+    
+    // --Divide--
+    function divide() {
+      var n1 = parseInt(document.getElementById("num1").value);
+      var n2 = parseInt(document.getElementById("num2").value);
+      if (isNaN(n1)) n1 = 0;
+      if (isNaN(n2)) n2 = 1; // divide by 0 से बचने के लिए
+      var eq = n1 / n2;
+      document.getElementById("demo").innerHTML = "Divide = " + eq;
+    }
+    
+    // --Remainder--
+    function rem() {
+      var n1 = parseInt(document.getElementById("num1").value);
+      var n2 = parseInt(document.getElementById("num2").value);
+      if (isNaN(n1)) n1 = 0;
+      if (isNaN(n2)) n2 = 1;
+      var rem = n1 % n2;
+      document.getElementById("demo").innerHTML = "Remainder = " + rem;
+    }
+    
+    // --Clear--
+    function clr() {
+    document.getElementById("num1").value ="";
+    document.getElementById("num2").value ="";
+  document.getElementById("demo").innerHTML ="";
+}
+  </script>
+</body>
+  </html>
