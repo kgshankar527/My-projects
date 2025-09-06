@@ -6,7 +6,14 @@ It contains sample inputs and outputs for testing.
 Project: Cube & Math Operations<br>      # Author: Gauri Shankar Katara
 <br>
 Date: 2025-09-04
-
+##  Live Demo
+  <h1>🚀 Welcome to My Projects</h1>
+  <p>Click a project below:</p>
+  <ul>
+    <li><a href="https://kgshankar527.github.io/My-projects/Project1/">Project 1</a></li>
+    <li><a href="https://kgshankar527.github.io/My-projects/Project2/">Project 2</a></li>
+    <li><a href="https://kgshankar527.github.io/My-projects/Project3/">Project 3</a></li>
+</ul>
 --------------------------
 ##  Smart Calculator 
 ##  Square & 
