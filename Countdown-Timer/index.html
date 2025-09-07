@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stopwatch Timer</title>
+  <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body{
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: linear-gradient(145deg, #432371, #f5a36c);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+  padding: 20px 15px;
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  margin-bottom: 20px;
+}
+
+.timer {
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 15px;
+  border-radius: 15px;
+  flex: 1 1 100px;
+  max-width: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.timer .time {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.timer .label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-shadow: 1px 1px #fff;
+}
+
+/* ✅ Button style */
+.buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #fff;
+  color: #432371;
+  transition: 0.3s;
+}
+button:hover {
+  background: #432371;
+  color: #fff;
+}
+
+/* ✅ Responsive */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.6rem;
+  }
+  .timer .time {
+    font-size: 1.4rem;
+  }
+  .timer .label {
+    font-size: 0.75rem;
+  }
+  button {
+    padding: 8px 15px;
+    font-size: 0.85rem;
+  }
+}
+  </style>
+</head>
+<body>
+  <h1>Stopwatch Timer</h1>
+  <div class="countdown">
+    <div class="timer">
+      <span id="days" class="time">00</span>
+      <span class="label">Days</span>
+    </div>
+    <div class="timer">
+      <span id="hours" class="time">00</span>
+      <span class="label">Hours</span>
+    </div>
+    <div class="timer">
+      <span id="minutes" class="time">00</span>
+      <span class="label">Minutes</span>
+    </div>
+    <div class="timer">
+      <span id="seconds" class="time">00</span>
+      <span class="label">Seconds</span>
+    </div>
+  </div>
+
+  <!-- ✅ Buttons -->
+  <div class="buttons">
+    <button id="startBtn">Start</button>
+    <button id="pauseBtn">Pause</button>
+    <button id="resetBtn">Reset</button>
+  </div>
+  
+  <script>
+    let countdownInterval;
+    let totalSeconds = 0;
+    let isRunning = false;
+    let isPaused = false;
+
+    const daysEl = document.getElementById("days");
+    const hoursEl = document.getElementById("hours");
+    const minutesEl = document.getElementById("minutes");
+    const secondsEl = document.getElementById("seconds");
+    const pauseBtn = document.getElementById("pauseBtn");
+
+    function updateDisplay() {
+      let days = Math.floor(totalSeconds / (24 * 3600));
+      let hours = Math.floor((totalSeconds % (24 * 3600)) / 3600);
+      let minutes = Math.floor((totalSeconds % 3600) / 60);
+      let seconds = totalSeconds % 60;
+
+      daysEl.innerText = String(days).padStart(2, "0");
+      hoursEl.innerText = String(hours).padStart(2, "0");
+      minutesEl.innerText = String(minutes).padStart(2, "0");
+      secondsEl.innerText = String(seconds).padStart(2, "0");
+    }
+
+    function startTimer() {
+      if (isRunning) return;
+      isRunning = true;
+      isPaused = false;
+      pauseBtn.innerText = "Pause";
+      countdownInterval = setInterval(() => {
+        totalSeconds++;
+        updateDisplay();
+      }, 1000);
+    }
+
+    function pauseResumeTimer() {
+      if (!isRunning) return; // अगर timer चला ही नहीं तो कुछ मत करो
+      if (isPaused) {
+        // Resume
+        isPaused = false;
+        pauseBtn.innerText = "Pause";
+        countdownInterval = setInterval(() => {
+          totalSeconds++;
+          updateDisplay();
+        }, 1000);
+      } else {
+        // Pause
+        isPaused = true;
+        pauseBtn.innerText = "Resume";
+        clearInterval(countdownInterval);
+      }
+    }
+
+    function resetTimer() {
+      clearInterval(countdownInterval);
+      isRunning = false;
+      isPaused = false;
+      pauseBtn.innerText = "Pause";
+      totalSeconds = 0;
+      updateDisplay();
+    }
+
+    document.getElementById("startBtn").addEventListener("click", startTimer);
+    document.getElementById("pauseBtn").addEventListener("click", pauseResumeTimer);
+    document.getElementById("resetBtn").addEventListener("click", resetTimer);
+
+    updateDisplay();
+  </script>
+</body>
+  </html>
