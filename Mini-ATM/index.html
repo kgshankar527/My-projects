@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATM Machine</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      text-align: center;
+      padding: 20px;
+      color: white;
+    }
+    #atm {
+      width: 320px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #111;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.7);
+    }
+    #screen {
+      background: #dff6ff;
+      color: black;
+      height: 120px;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      font-size: 16px;
+      text-align: left;
+      overflow-y: auto;
+    }
+    #pinInput {
+      width: 90%;
+      padding: 10px;
+      font-size: 18px;
+      text-align: center;
+      border-radius: 8px;
+      margin: 10px 0;
+      border: none;
+    }
+    #keypad {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 10px 0;
+    }
+    .btn {
+      padding: 15px;
+      font-size: 18px;
+      border-radius: 10px;
+      border: none;
+      background: #00c6ff;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .btn:hover {
+      background: #0072ff;
+    }
+    .action-btn {
+      background: #ff4d4d;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🏦 ATM Machine</h2>
+  <div id="atm">
+    <div id="screen">
+      Welcome! Please Enter Your PIN<br>
+      (3 attempts allowed)
+    </div>
+
+    <!-- PIN Input -->
+    <input type="password" id="pinInput" maxlength="4" readonly>
+
+    <!-- Keypad -->
+    <div id="keypad">
+      <button class="btn" onclick="pressNum(1)">1</button>
+      <button class="btn" onclick="pressNum(2)">2</button>
+      <button class="btn" onclick="pressNum(3)">3</button>
+      <button class="btn" onclick="pressNum(4)">4</button>
+      <button class="btn" onclick="pressNum(5)">5</button>
+      <button class="btn" onclick="pressNum(6)">6</button>
+      <button class="btn" onclick="pressNum(7)">7</button>
+      <button class="btn" onclick="pressNum(8)">8</button>
+      <button class="btn" onclick="pressNum(9)">9</button>
+      <button class="btn action-btn" onclick="clearInput()">C</button>
+      <button class="btn" onclick="pressNum(0)">0</button>
+      <button class="btn action-btn" onclick="submitPin()">⏎</button>
+    </div>
+
+    <!-- Menu Section -->
+    <div id="menu-section" class="hidden">
+      <button class="btn" onclick="checkBalance()">💰 Balance</button>
+      <button class="btn" onclick="withdrawMoney()">💵 Withdraw</button>
+      <button class="btn action-btn" onclick="exitATM()">🚪 Exit</button>
+    </div>
+  </div>
+
+  <script>
+    let correctPin = "1234";
+    let attempts = 0;
+    let balance = 10000;
+    let screen = document.getElementById("screen");
+
+    function pressNum(num) {
+      document.getElementById("pinInput").value += num;
+    }
+
+    function clearInput() {
+      document.getElementById("pinInput").value = "";
+    }
+
+    function submitPin() {
+      let pin = document.getElementById("pinInput").value;
+      attempts++;
+
+      if (pin === correctPin) {
+        screen.innerHTML = "✅ Access Granted!<br>Select Option:";
+        document.getElementById("pinInput").classList.add("hidden");
+        document.getElementById("keypad").classList.add("hidden");
+        document.getElementById("menu-section").classList.remove("hidden");
+      } else {
+        if (attempts >= 3) {
+          screen.innerHTML = "🚫 Card Blocked!";
+          document.getElementById("pinInput").disabled = true;
+        } else {
+          screen.innerHTML = "❌ Wrong PIN! Attempts left: " + (3 - attempts);
+          clearInput();
+        }
+      }
+    }
+
+    function checkBalance() {
+      screen.innerHTML = "💰 Your Balance is ₹" + balance;
+    }
+
+    function withdrawMoney() {
+      let amount = prompt("Enter amount to withdraw:");
+      amount = Number(amount);
+      if (amount > 0 && amount <= balance) {
+        balance -= amount;
+        screen.innerHTML = "✅ Withdraw ₹" + amount + " successful.<br>Remaining Balance: ₹" + balance;
+      } else {
+        screen.innerHTML = "⚠️ Invalid amount or insufficient balance!";
+      }
+    }
+
+    function exitATM() {
+      screen.innerHTML = "👋 Thank you for using our ATM!";
+      setTimeout(() => {
+        location.reload();
+      }, 2000);
+    }
+  </script>
+
+</body>
+</html>
