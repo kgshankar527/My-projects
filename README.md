@@ -15,6 +15,7 @@ Date: 2025-09-04
     <li><a href="https://kgshankar527.github.io/My-projects/Form-validation/">Form validation</a></li>
     <li><a href="https://kgshankar527.github.io/My-projects/Countdown-Timer/">Countdown Timer</a></li>
     <li><a href="https://kgshankar527.github.io/My-projects/Magic-menu/">Magic-menu</a></li>
+    <li><a href="https://kgshankar527.github.io/My-projects/Mini-ATM/">Loop use ATM</a></li>
 </ul>
    Input: 5 <br>
    Square(5) = 25<br>
