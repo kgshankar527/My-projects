@@ -16,7 +16,7 @@
 - [Countdown Timer](https://kgshankar527.github.io/My-projects/Countdown-Timer/)  
 - [Magic Menu](https://kgshankar527.github.io/My-projects/Magic-menu/)  
 - [Loop use ATM](https://kgshankar527.github.io/My-projects/Mini-ATM/)  
-- [Sliding-sign in-up](https://kgshankar527.github.io/My-projects/Sliding-sign-in-up/)  
+- [Sliding-sign in-up](https://kgshankar527.github.io/My-projects/Sliding-sign in-up/)  
 
 ---
 
